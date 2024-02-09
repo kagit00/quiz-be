@@ -11,11 +11,19 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.Objects;
 
+/**
+ * The type User details service.
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
     private final Cache cache;
 
+    /**
+     * Instantiates a new User details service.
+     *
+     * @param cache the cache
+     */
     public UserDetailsServiceImpl(Cache cache) {
         this.cache = cache;
     }

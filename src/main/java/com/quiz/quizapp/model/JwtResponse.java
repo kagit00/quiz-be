@@ -3,6 +3,9 @@ package com.quiz.quizapp.model;
 import lombok.*;
 
 
+/**
+ * The type Jwt response.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString

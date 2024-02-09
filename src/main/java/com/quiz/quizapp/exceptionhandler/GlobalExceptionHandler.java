@@ -12,15 +12,17 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/**
+ * The type Global exception handler.
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     /**
      * This function handles a BadRequestException by returning a ResponseEntity with an Error object
      * containing the exception message, HttpStatus, timestamp, and UID.
-     * 
-     * @param e The parameter "e" is an instance of the BadRequestException class, which is an
-     * exception that is thrown when a bad request is made.
+     *
+     * @param e The parameter "e" is an instance of the BadRequestException class, which is an exception that is thrown when a bad request is made.
      * @return A ResponseEntity object is being returned.
      */
     @ExceptionHandler(BadRequestException.class)
@@ -28,6 +30,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(getError(e.getMessage(), HttpStatus.BAD_REQUEST, DefaultValuesPopulator.getTimestamp(), DefaultValuesPopulator.getUid()), HttpStatus.BAD_REQUEST);
     }
 
+    /**
+     * Handle validation exception response entity.
+     *
+     * @param ex the ex
+     * @return the response entity
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Error> handleValidationException(MethodArgumentNotValidException ex) {
         BindingResult bindingResult = ex.getBindingResult();
@@ -43,9 +51,8 @@ public class GlobalExceptionHandler {
     /**
      * This function handles an InternalServerErrorException and returns a ResponseEntity with an Error
      * object containing the exception message, status code, timestamp, and unique identifier.
-     * 
-     * @param e The parameter "e" is an instance of the InternalServerErrorException class, which is an
-     * exception that is thrown when an internal server error occurs.
+     *
+     * @param e The parameter "e" is an instance of the InternalServerErrorException class, which is an exception that is thrown when an internal server error occurs.
      * @return A ResponseEntity object is being returned.
      */
     @ExceptionHandler(InternalServerErrorException.class)

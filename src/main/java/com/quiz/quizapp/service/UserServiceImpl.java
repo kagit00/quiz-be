@@ -16,6 +16,9 @@ import org.springframework.stereotype.Service;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * The type User service.
+ */
 @Service
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
@@ -24,6 +27,14 @@ public class UserServiceImpl implements UserService {
     private final BCryptPasswordEncoder encoder;
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
+    /**
+     * Instantiates a new User service.
+     *
+     * @param userDao the user dao
+     * @param cache   the cache
+     * @param roleDao the role dao
+     * @param encoder the encoder
+     */
     public UserServiceImpl(UserDao userDao, Cache cache, RoleDao roleDao, BCryptPasswordEncoder encoder) {
         this.userDao = userDao;
         this.cache = cache;

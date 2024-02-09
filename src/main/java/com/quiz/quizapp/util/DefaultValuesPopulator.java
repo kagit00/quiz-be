@@ -9,15 +9,20 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * The type Default values populator.
+ */
 public final class DefaultValuesPopulator {
-    // The `private DefaultValuesPopulator()` is a private constructor of the `DefaultValuesPopulator`
-    // class. It is throwing an `UnsupportedOperationException` with the message "Operation not
-    // supported". This is done to prevent the instantiation of the `DefaultValuesPopulator` class, as
-    // it is a utility class that provides static methods and should not be instantiated.
     private DefaultValuesPopulator() {
         throw new UnsupportedOperationException("Operation not supported");
     }
 
+    /**
+     * Populate default user roles set.
+     *
+     * @param user the user
+     * @return the set
+     */
     public static Set<UserRole> populateDefaultUserRoles(User user) {
         Role role = new Role();
         role.setRoleName("USER");
@@ -32,10 +37,20 @@ public final class DefaultValuesPopulator {
         return userRoles;
     }
 
+    /**
+     * Gets timestamp.
+     *
+     * @return the timestamp
+     */
     public static String getTimestamp() {
         return OffsetDateTime.now().toString();
     }
 
+    /**
+     * Gets uid.
+     *
+     * @return the uid
+     */
     public static String getUid() {
         return UUID.randomUUID().toString();
     }

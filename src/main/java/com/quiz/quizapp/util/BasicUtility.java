@@ -5,11 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.quiz.quizapp.exception.BadRequestException;
 
 public final class BasicUtility {
-    // The code `private BasicUtility() { throw new UnsupportedOperationException("Not supported"); }`
-    // is a private constructor for the `BasicUtility` class. It is used to prevent the instantiation
-    // of the `BasicUtility` class. By throwing an `UnsupportedOperationException`, it indicates that
-    // creating an instance of the `BasicUtility` class is not supported. This is commonly done for
-    // utility classes that only contain static methods and should not be instantiated.
+
     private BasicUtility() {
         throw new UnsupportedOperationException("Not supported");
     }

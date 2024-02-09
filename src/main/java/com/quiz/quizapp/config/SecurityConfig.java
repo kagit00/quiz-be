@@ -28,12 +28,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.authTokenFilter = authTokenFilter;
     }
 
+    /**
+     * The function returns the authentication manager.
+     * 
+     * @return The method is returning an instance of the AuthenticationManager.
+     */
     @Override
     @Bean
     protected AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
     }
 
+    /**
+     * The function returns a BCryptPasswordEncoder object, which is used for encoding passwords in
+     * Java.
+     * 
+     * @return The method is returning an instance of the BCryptPasswordEncoder class, which is a
+     * PasswordEncoder implementation provided by the Spring Security framework.
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

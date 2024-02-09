@@ -2,6 +2,9 @@ package com.quiz.quizapp.model;
 
 import lombok.*;
 
+/**
+ * The type Jwt request.
+ */
 @Setter
 @Getter
 @ToString

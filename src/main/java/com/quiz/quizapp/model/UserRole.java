@@ -4,6 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * The type User role.
+ */
 @Entity
 @Getter
 @Setter

@@ -3,6 +3,9 @@ package com.quiz.quizapp.model;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 
+/**
+ * The type Error.
+ */
 @Getter
 @AllArgsConstructor
 @ToString
