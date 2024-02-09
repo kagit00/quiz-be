@@ -1,7 +1,9 @@
 package com.quiz.quizapp.model;
 
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 
+@ToString
 public class Authority implements GrantedAuthority {
     private String authority;
     public Authority(String authority) {
@@ -11,12 +13,5 @@ public class Authority implements GrantedAuthority {
     @Override
     public String getAuthority() {
         return authority;
-    }
-
-    @Override
-    public String toString() {
-        return "Authority{" +
-                "authority='" + authority + '\'' +
-                '}';
     }
 }
