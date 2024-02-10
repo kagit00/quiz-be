@@ -40,7 +40,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) {
         try {
             String requestTokenHeader = request.getHeader("Authorization");
             String username = null;
@@ -64,16 +64,8 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 logger.info("Token is invalid");
             }
             filterChain.doFilter(request, response);
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | ExpiredJwtException | MalformedJwtException | ServletException | IOException e) {
             logger.info(e.getMessage());
-            throw new InternalServerErrorException("Illegal Argument while fetching the username.");
-        } catch (ExpiredJwtException e) {
-            logger.info(e.getMessage());
-            throw new InternalServerErrorException("Given jwt token is expired.");
-        } catch (MalformedJwtException e) {
-            logger.info(e.getMessage());
-            throw new InternalServerErrorException("Invalid Token");
-        } catch (ServletException | IOException e) {
             throw new InternalServerErrorException(e.getMessage());
         }
     }
