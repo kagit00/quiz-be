@@ -3,7 +3,7 @@ package com.quiz.quizapp.service;
 import com.quiz.quizapp.exception.BadRequestException;
 import com.quiz.quizapp.model.JwtRequest;
 import com.quiz.quizapp.model.JwtResponse;
-import com.quiz.quizapp.util.JwtUtils;
+import com.quiz.quizapp.security.JwtUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;

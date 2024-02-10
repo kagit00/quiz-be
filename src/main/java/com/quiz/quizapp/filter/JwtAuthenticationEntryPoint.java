@@ -1,4 +1,4 @@
-package com.quiz.quizapp.config;
+package com.quiz.quizapp.filter;
 
 import com.quiz.quizapp.exception.InternalServerErrorException;
 import com.quiz.quizapp.model.Error;

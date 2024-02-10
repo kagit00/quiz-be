@@ -1,4 +1,4 @@
-package com.quiz.quizapp.util;
+package com.quiz.quizapp.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

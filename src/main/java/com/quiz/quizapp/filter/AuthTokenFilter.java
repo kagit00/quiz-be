@@ -1,8 +1,8 @@
-package com.quiz.quizapp.config;
+package com.quiz.quizapp.filter;
 
 import com.quiz.quizapp.exception.InternalServerErrorException;
 import com.quiz.quizapp.service.UserDetailsServiceImpl;
-import com.quiz.quizapp.util.JwtUtils;
+import com.quiz.quizapp.security.JwtUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import jakarta.servlet.FilterChain;

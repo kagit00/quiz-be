@@ -1,5 +1,7 @@
-package com.quiz.quizapp.config;
+package com.quiz.quizapp.security;
 
+import com.quiz.quizapp.filter.AuthTokenFilter;
+import com.quiz.quizapp.filter.JwtAuthenticationEntryPoint;
 import com.quiz.quizapp.exception.InternalServerErrorException;
 import com.quiz.quizapp.util.Constant;
 import org.springframework.context.annotation.Bean;
