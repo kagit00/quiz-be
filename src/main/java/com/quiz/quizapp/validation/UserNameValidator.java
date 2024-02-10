@@ -19,6 +19,6 @@ public class UserNameValidator implements ConstraintValidator<ValidUser, String>
      */
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return value != null && !StringUtils.isEmpty(value) && value.matches("^[a-zA-Z0-9_-]{3,16}$");
+        return !StringUtils.isEmpty(value) && value.matches("^[a-zA-Z0-9_-]{3,16}$");
     }
 }

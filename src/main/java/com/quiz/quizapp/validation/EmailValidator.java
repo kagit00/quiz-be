@@ -17,6 +17,6 @@ public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
      */
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return value != null && !StringUtils.isEmpty(value) && value.matches("^[\\w.-]+@[\\w-]+(?:\\.[\\w-]+)*$");
+        return !StringUtils.isEmpty(value) && value.matches("^[\\w.-]+@[\\w-]+(?:\\.[\\w-]+)*$");
     }
 }

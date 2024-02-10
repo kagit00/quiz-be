@@ -18,6 +18,6 @@ public class FirstNameValidator implements ConstraintValidator<ValidFirstName, S
      */
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return value != null && !StringUtils.isEmpty(value) && value.matches("^[a-zA-Z'-]{1,50}$");
+        return !StringUtils.isEmpty(value) && value.matches("^[a-zA-Z'-]{1,50}$");
     }
 }

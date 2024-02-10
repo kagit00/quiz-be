@@ -66,6 +66,8 @@ public class UserServiceImpl implements UserService {
         User existingUser = cache.getUserByUsername(username);
         if (Objects.isNull(existingUser))
             throw new BadRequestException("User doesn't exist.");
+        if (!user.getUsername().equals(existingUser.getUsername()))
+            existingUser.setUsername(user.getUsername());
         if (!user.getPhone().equals(existingUser.getPhone()))
             existingUser.setPhone(user.getPhone());
         if (!StringUtils.isEmpty(user.getAbout()) && !user.getAbout().equals(existingUser.getAbout()))
