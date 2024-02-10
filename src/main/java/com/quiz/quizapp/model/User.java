@@ -2,10 +2,10 @@ package com.quiz.quizapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.quiz.quizapp.validation.*;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;

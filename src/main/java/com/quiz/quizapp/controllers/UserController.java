@@ -3,11 +3,12 @@ package com.quiz.quizapp.controllers;
 import com.quiz.quizapp.model.NoContent;
 import com.quiz.quizapp.model.User;
 import com.quiz.quizapp.service.UserServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
 
 /**
  * The type User controller.
@@ -34,7 +35,7 @@ public class UserController {
      * @return the response entity
      */
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> registerUser(@Valid @RequestBody User user) {
+    public ResponseEntity<User> registerUser(@Validated @RequestBody User user) {
         return new ResponseEntity<>(userService.registerUser(user), HttpStatus.OK);
     }
 
@@ -70,6 +71,6 @@ public class UserController {
     @DeleteMapping(value = "/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<NoContent> deleteUserByUsername(@PathVariable("username") String username) {
         userService.deleteUserByUsername(username);
-        return new ResponseEntity<>(new NoContent(HttpStatus.NO_CONTENT, "successfully deleted."), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(new NoContent(HttpStatus.OK, "successfully deleted."), HttpStatus.OK);
     }
 }

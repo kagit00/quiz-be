@@ -1,8 +1,7 @@
 package com.quiz.quizapp.model;
 
+import jakarta.persistence.*;
 import lombok.*;
-
-import javax.persistence.*;
 
 /**
  * The type User role.

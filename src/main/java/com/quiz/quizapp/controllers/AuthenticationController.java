@@ -27,7 +27,6 @@ public class AuthenticationController {
         this.authenticationService = authenticationService;
     }
 
-
     /**
      * Generate token response entity.
      *

@@ -66,12 +66,18 @@ public class UserServiceImpl implements UserService {
         User existingUser = cache.getUserByUsername(username);
         if (Objects.isNull(existingUser))
             throw new BadRequestException("User doesn't exist.");
-        if (!user.getPhone().equals(existingUser.getPhone())) existingUser.setPhone(user.getPhone());
-        if (!StringUtils.isEmpty(user.getAbout()) && !user.getAbout().equals(existingUser.getAbout())) existingUser.setPhone(user.getAbout());
-        if (!user.getEmail().equals(existingUser.getEmail())) existingUser.setPhone(user.getEmail());
-        if (!ObjectUtils.isEmpty(user.getDateOfBirth()) && ObjectUtils.notEqual(user.getDateOfBirth(), existingUser.getDateOfBirth())) existingUser.setDateOfBirth(user.getDateOfBirth());
-        if (!user.getFirstName().equals(existingUser.getFirstName())) existingUser.setFirstName(user.getFirstName());
-        if (!StringUtils.isEmpty(user.getLastName()) && !user.getLastName().equals(existingUser.getLastName())) existingUser.setLastName(user.getLastName());
+        if (!user.getPhone().equals(existingUser.getPhone()))
+            existingUser.setPhone(user.getPhone());
+        if (!StringUtils.isEmpty(user.getAbout()) && !user.getAbout().equals(existingUser.getAbout()))
+            existingUser.setPhone(user.getAbout());
+        if (!user.getEmail().equals(existingUser.getEmail()))
+            existingUser.setPhone(user.getEmail());
+        if (!ObjectUtils.isEmpty(user.getDateOfBirth()) && ObjectUtils.notEqual(user.getDateOfBirth(), existingUser.getDateOfBirth()))
+            existingUser.setDateOfBirth(user.getDateOfBirth());
+        if (!user.getFirstName().equals(existingUser.getFirstName()))
+            existingUser.setFirstName(user.getFirstName());
+        if (!StringUtils.isEmpty(user.getLastName()) && !user.getLastName().equals(existingUser.getLastName()))
+            existingUser.setLastName(user.getLastName());
         userDao.save(existingUser);
         return existingUser;
     }
