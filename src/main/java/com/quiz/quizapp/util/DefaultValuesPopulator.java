@@ -3,7 +3,6 @@ package com.quiz.quizapp.util;
 import com.quiz.quizapp.model.Role;
 import com.quiz.quizapp.model.User;
 import com.quiz.quizapp.model.UserRole;
-
 import java.time.OffsetDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +24,7 @@ public final class DefaultValuesPopulator {
      */
     public static Set<UserRole> populateDefaultUserRoles(User user) {
         Role role = new Role();
-        role.setRoleName("USER");
+        role.setRoleName(Constant.USER_ROLE);
         role.setId(2L);
 
         UserRole userRole = new UserRole();
