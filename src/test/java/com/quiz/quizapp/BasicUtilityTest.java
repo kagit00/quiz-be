@@ -5,6 +5,9 @@ import com.quiz.quizapp.util.BasicUtility;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * The type Basic utility test.
+ */
 class BasicUtilityTest {
     /**
      * The `stringifyObjectTest` function tests whether the `stringifyObject` method successfully

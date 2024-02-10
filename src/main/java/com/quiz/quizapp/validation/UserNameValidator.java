@@ -4,6 +4,9 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * The type User name validator.
+ */
 public class UserNameValidator implements ConstraintValidator<ValidUser, String> {
     /**
      * The function checks if a given string is a valid user name by ensuring it is not null, not

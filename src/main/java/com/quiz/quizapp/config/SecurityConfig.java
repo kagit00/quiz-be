@@ -30,8 +30,8 @@ public class SecurityConfig {
     /**
      * Instantiates a new Security config.
      *
-     * @param unauthorizedHandler    the unauthorized handler
-     * @param authTokenFilter        the auth token filter
+     * @param unauthorizedHandler the unauthorized handler
+     * @param authTokenFilter     the auth token filter
      */
     public SecurityConfig(JwtAuthenticationEntryPoint unauthorizedHandler, AuthTokenFilter authTokenFilter) {
         this.unauthorizedHandler = unauthorizedHandler;
@@ -49,6 +49,7 @@ public class SecurityConfig {
     }
 
     /**
+     * Authentication manager authentication manager.
      *
      * @param authenticationConfiguration the authentication configuration
      * @return the authentication manager

@@ -4,6 +4,9 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * The type Phone validator.
+ */
 public class PhoneValidator implements ConstraintValidator<ValidPhone, String> {
     /**
      * The function checks if a given phone number is valid and throws a BadRequestException if it is

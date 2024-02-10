@@ -4,6 +4,9 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * The type Last name validator.
+ */
 public class LastNameValidator implements ConstraintValidator<ValidLastName, String> {
     /**
      * The function checks if a given string is a valid user name, and throws a BadRequestException if

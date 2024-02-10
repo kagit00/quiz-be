@@ -3,8 +3,6 @@ package com.quiz.quizapp.service;
 import com.quiz.quizapp.cache.Cache;
 import com.quiz.quizapp.exception.BadRequestException;
 import com.quiz.quizapp.model.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,7 +14,6 @@ import java.util.Objects;
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
     private final Cache cache;
 
     /**
@@ -29,12 +26,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User existingUser = cache.getUserByUsername(username);
-        if (Objects.isNull(existingUser)) {
-            logger.info("User doesn't exist.");
-            throw new BadRequestException("User doesn't exist.");
+    public UserDetails loadUserByUsername(String username) {
+        try {
+            User existingUser = cache.getUserByUsername(username);
+            if (Objects.isNull(existingUser)) {
+                throw new BadRequestException("User doesn't exist.");
+            }
+            return existingUser;
+        } catch (UsernameNotFoundException e) {
+            throw new BadRequestException("Invalid Username");
         }
-        return existingUser;
     }
 }

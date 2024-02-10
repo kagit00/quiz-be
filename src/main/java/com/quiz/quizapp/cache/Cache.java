@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 public class Cache {
     private final UserDao userDao;
 
+
     /**
      * Instantiates a new Cache.
      *
@@ -20,6 +21,7 @@ public class Cache {
     public Cache(UserDao userDao) {
         this.userDao = userDao;
     }
+
 
     /**
      * Gets user by username.

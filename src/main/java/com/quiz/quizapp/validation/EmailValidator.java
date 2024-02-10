@@ -4,6 +4,9 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * The type Email validator.
+ */
 public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
     /**
      * The function checks if a given email address is valid and throws a BadRequestException if it is

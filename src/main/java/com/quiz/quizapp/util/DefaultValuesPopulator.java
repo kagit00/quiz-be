@@ -3,7 +3,8 @@ package com.quiz.quizapp.util;
 import com.quiz.quizapp.model.Role;
 import com.quiz.quizapp.model.User;
 import com.quiz.quizapp.model.UserRole;
-import java.time.OffsetDateTime;
+import org.threeten.bp.OffsetDateTime;
+import org.threeten.bp.ZoneOffset;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -41,8 +42,8 @@ public final class DefaultValuesPopulator {
      *
      * @return the timestamp
      */
-    public static String getTimestamp() {
-        return OffsetDateTime.now().toString();
+    public static String getCurrentTimestamp() {
+        return OffsetDateTime.now().withOffsetSameInstant(ZoneOffset.UTC).toString();
     }
 
     /**

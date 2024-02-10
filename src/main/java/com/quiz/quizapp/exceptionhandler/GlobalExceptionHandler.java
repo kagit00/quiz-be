@@ -27,7 +27,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<Error> handleBadRequestException(BadRequestException e) {
-        return new ResponseEntity<>(getError(e.getMessage(), HttpStatus.BAD_REQUEST, DefaultValuesPopulator.getTimestamp(), DefaultValuesPopulator.getUid()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(getError(e.getMessage(), HttpStatus.BAD_REQUEST, DefaultValuesPopulator.getCurrentTimestamp(), DefaultValuesPopulator.getUid()), HttpStatus.BAD_REQUEST);
     }
 
     /**
@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
             errorMessage.append(" Field '").append(fieldError.getField())
                     .append("' ").append(fieldError.getDefaultMessage()).append(";");
         }
-        return new ResponseEntity<>(getError(errorMessage.toString(), HttpStatus.BAD_REQUEST, DefaultValuesPopulator.getTimestamp(), DefaultValuesPopulator.getUid()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(getError(errorMessage.toString(), HttpStatus.BAD_REQUEST, DefaultValuesPopulator.getCurrentTimestamp(), DefaultValuesPopulator.getUid()), HttpStatus.BAD_REQUEST);
     }
 
     /**
@@ -57,7 +57,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(InternalServerErrorException.class)
     public ResponseEntity<Error> handleInternalServerErrorException(InternalServerErrorException e) {
-        return new ResponseEntity<>(getError(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, DefaultValuesPopulator.getTimestamp(), DefaultValuesPopulator.getUid()), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(getError(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, DefaultValuesPopulator.getCurrentTimestamp(), DefaultValuesPopulator.getUid()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     /**

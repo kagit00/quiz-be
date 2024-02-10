@@ -4,6 +4,9 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * The type First name validator.
+ */
 public class FirstNameValidator implements ConstraintValidator<ValidFirstName, String> {
     /**
      * The function checks if a given string is a valid first name by ensuring it contains only
