@@ -15,6 +15,9 @@ class BasicUtilityTest {
      */
     @Test
     void stringifyObjectTest() {
-        Assertions.assertEquals("{\"id\":3,\"roleName\":\"Moderator\"}", BasicUtility.stringifyObject(new Role(3, "Moderator")), "Object stringified successfully");
+        Role role = new Role();
+        role.setId(3);
+        role.setRoleName("Moderator");
+        Assertions.assertEquals("{\"id\":3,\"roleName\":\"Moderator\",\"roles\":[]}", BasicUtility.stringifyObject(role), "Object stringified successfully");
     }
 }
