@@ -3,6 +3,7 @@ package com.quiz.quizapp.service;
 import com.quiz.quizapp.exception.BadRequestException;
 import com.quiz.quizapp.model.JwtRequest;
 import com.quiz.quizapp.model.JwtResponse;
+import com.quiz.quizapp.model.User;
 import com.quiz.quizapp.security.JwtUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -55,5 +56,9 @@ public class AuthenticationService {
         } catch (BadCredentialsException e) {
             throw new BadRequestException("Bad Credentials" + e.getMessage());
         }
+    }
+
+    public User getPrincipal(String principal) {
+        return (User) this.userDetailsService.loadUserByUsername(principal);
     }
 }

@@ -45,14 +45,10 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             String requestTokenHeader = request.getHeader("Authorization");
             String username = null;
             String jwtToken = null;
-
             if (!StringUtils.isEmpty(requestTokenHeader) && requestTokenHeader.startsWith("Bearer")) {
                 jwtToken = requestTokenHeader.substring(7);
                 username = this.jwtUtils.getUsernameFromToken(jwtToken);
-            } else {
-                logger.info("Token is invalid");
             }
-
             if (!Objects.isNull(username) && Objects.isNull(SecurityContextHolder.getContext().getAuthentication())) {
                 UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
                 if (Boolean.TRUE.equals(this.jwtUtils.validateToken(jwtToken, userDetails))) {
@@ -60,8 +56,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                     usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
                 }
-            } else {
-                logger.info("Token is invalid");
             }
             filterChain.doFilter(request, response);
         } catch (IllegalArgumentException | ExpiredJwtException | MalformedJwtException | ServletException | IOException e) {

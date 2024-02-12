@@ -18,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 
 /**
  * The type Security config.
@@ -73,7 +74,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) {
         try {
             http
-                    .csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable)
+                    .csrf(AbstractHttpConfigurer::disable)
+                    .cors(cors -> cors
+                            .configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()))
                     .authorizeHttpRequests(auth ->
                             auth
                                     .requestMatchers("/users", "/auth/token").permitAll()
