@@ -47,7 +47,7 @@ public class User implements UserDetails {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private Set<UserRole> roles = new HashSet<>();
-    private boolean enabled;
+    private boolean enabled = true;
 
     @Override
     public boolean isAccountNonExpired() {
