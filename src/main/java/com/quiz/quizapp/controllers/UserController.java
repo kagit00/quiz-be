@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
 /**
  * The type User controller.
  */
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/users")
-@CrossOrigin("*")
 public class UserController {
     private final UserServiceImpl userService;
 

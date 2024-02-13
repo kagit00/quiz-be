@@ -76,11 +76,16 @@ public class SecurityConfig {
             http
                     .csrf(AbstractHttpConfigurer::disable)
                     .cors(cors -> cors
-                            .configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()))
+                            .configurationSource(request -> {
+                                CorsConfiguration corsConfiguration = new CorsConfiguration();
+                                corsConfiguration.applyPermitDefaultValues();
+                                corsConfiguration.addAllowedMethod(HttpMethod.PUT.name());
+                                corsConfiguration.addAllowedMethod(HttpMethod.DELETE.name());
+                                return corsConfiguration;
+                            }))
                     .authorizeHttpRequests(auth ->
                             auth
                                     .requestMatchers("/users", "/auth/token").permitAll()
-                                    .requestMatchers(HttpMethod.DELETE).hasAnyAuthority(Constant.ADMIN_ROLE)
                                     .requestMatchers("/users/**").hasAnyAuthority(Constant.USER_ROLE, Constant.ADMIN_ROLE)
                                     .anyRequest().authenticated()
                     ).exceptionHandling(ex -> ex.authenticationEntryPoint(unauthorizedHandler))

@@ -71,9 +71,9 @@ public class UserServiceImpl implements UserService {
         if (!user.getPhone().equals(existingUser.getPhone()))
             existingUser.setPhone(user.getPhone());
         if (!StringUtils.isEmpty(user.getAbout()) && !user.getAbout().equals(existingUser.getAbout()))
-            existingUser.setPhone(user.getAbout());
+            existingUser.setAbout(user.getAbout());
         if (!user.getEmail().equals(existingUser.getEmail()))
-            existingUser.setPhone(user.getEmail());
+            existingUser.setEmail(user.getEmail());
         if (!ObjectUtils.isEmpty(user.getDateOfBirth()) && ObjectUtils.notEqual(user.getDateOfBirth(), existingUser.getDateOfBirth()))
             existingUser.setDateOfBirth(user.getDateOfBirth());
         if (!user.getFirstName().equals(existingUser.getFirstName()))
