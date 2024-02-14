@@ -21,21 +21,8 @@ import java.io.PrintWriter;
  */
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
-    private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationEntryPoint.class);
-
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) {
-        try {
-            logger.error("Unauthorized error: {}", e.getMessage());
-            response.setStatus(401);
-            Error error = new Error(DefaultValuesPopulator.getUid(), HttpStatus.UNAUTHORIZED, DefaultValuesPopulator.getCurrentTimestamp(), "Access Denied. " + e.getMessage());
-            String str = BasicUtility.stringifyObject(error);
-            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            PrintWriter writer = response.getWriter();
-            writer.write(str);
-        } catch (IOException ex) {
-            logger.error(e.getMessage());
-            throw new InternalServerErrorException(e.getMessage());
-        }
+        BasicUtility.printError(e.getMessage(), response);
     }
 }

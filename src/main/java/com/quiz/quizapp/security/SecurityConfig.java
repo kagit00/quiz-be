@@ -86,7 +86,8 @@ public class SecurityConfig {
                     .authorizeHttpRequests(auth ->
                             auth
                                     .requestMatchers("/users", "/auth/token").permitAll()
-                                    .requestMatchers("/users/**").hasAnyAuthority(Constant.USER_ROLE, Constant.ADMIN_ROLE)
+                                    .requestMatchers("/users/**", "/categories/**", "/questions/**", "/quizzes/**")
+                                    .hasAnyAuthority(Constant.USER_ROLE, Constant.ADMIN_ROLE)
                                     .anyRequest().authenticated()
                     ).exceptionHandling(ex -> ex.authenticationEntryPoint(unauthorizedHandler))
                     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
