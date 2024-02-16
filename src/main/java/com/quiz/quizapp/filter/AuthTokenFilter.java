@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.core.annotation.Order;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,6 +25,7 @@ import java.util.Objects;
  * The type Auth token filter.
  */
 @Component
+@Order(1)
 public class AuthTokenFilter extends OncePerRequestFilter {
     private final JwtUtils jwtUtils;
     private final UserDetailsServiceImpl userDetailsService;
@@ -61,7 +63,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         } catch (IllegalArgumentException | ExpiredJwtException | MalformedJwtException | ServletException | IOException ex) {
             logger.info(ex.getMessage());
-            response.setStatus(500);
+            response.setStatus(401);
             BasicUtility.printError(ex.getMessage(), response);
         }
     }
