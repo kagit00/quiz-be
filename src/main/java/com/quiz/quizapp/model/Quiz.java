@@ -23,7 +23,9 @@ public class Quiz {
     private boolean isActive = false;
     @NotNull(message = "title can't be null")
     @NotEmpty(message = "title can't be empty")
+    @Column(columnDefinition = "TEXT")
     private String title;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private int maxMarks;
     private int numberOfQuestions;

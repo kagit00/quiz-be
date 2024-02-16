@@ -22,7 +22,9 @@ public class Category {
     private UUID cid;
     @NotNull(message = "title can't be null")
     @NotEmpty(message = "title can't be empty")
+    @Column(columnDefinition = "TEXT")
     private String title;
+    @Column(columnDefinition = "TEXT")
     private String description;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "category", orphanRemoval = true)
     @JsonIgnore

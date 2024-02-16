@@ -22,6 +22,7 @@ public class Question {
     private UUID questionId;
     @NotNull(message = "content can't be null")
     @NotEmpty(message = "content can't be empty")
+    @Column(columnDefinition = "TEXT")
     private String content;
     private String img;
     @ValidOptions
