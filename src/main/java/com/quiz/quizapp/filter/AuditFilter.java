@@ -5,6 +5,7 @@ import com.quiz.quizapp.encryption.EncryptionUtil;
 import com.quiz.quizapp.model.Audit;
 import com.quiz.quizapp.util.BasicUtility;
 import com.quiz.quizapp.util.DefaultValuesPopulator;
+import com.quiz.quizapp.util.HeadersUtility;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -63,10 +64,11 @@ public class AuditFilter implements Filter {
     private void saveAuditData(ContentCachingRequestWrapper requestWrapper, ContentCachingResponseWrapper responseWrapper) {
         try {
             int statusCode = responseWrapper.getStatus();
-            String responseHeaders = BasicUtility.extractResponseHeaders(responseWrapper);
+            String responseHeaders = HeadersUtility.extractResponseHeaders(responseWrapper);
             String responseBody = new String(responseWrapper.getContentAsByteArray());
             String requestBody = requestWrapper.getContentAsString();
-            String requestHeaders = BasicUtility.extractRequestHeaders(requestWrapper);
+            String requestHeaders = HeadersUtility.extractRequestHeaders(requestWrapper);
+            String uid = BasicUtility.readSpecificProperty(responseBody, "$.uid");
 
             Audit audit = new Audit();
             audit.setTimestamp(DefaultValuesPopulator.getCurrentTimestamp());
@@ -75,6 +77,7 @@ public class AuditFilter implements Filter {
             audit.setResponse(encryptionUtil.encrypt(responseHeaders + "\n" + "Response Body: " + responseBody));
             audit.setStatus(String.valueOf(statusCode));
             audit.setUri(requestWrapper.getRequestURI());
+            audit.setUid(uid);
             auditDao.save(audit);
         } catch (Exception e) {
             logger.error("Error saving audit data: {}", e.getMessage());

@@ -1,6 +1,6 @@
 package com.quiz.quizapp.filter;
 
-import com.quiz.quizapp.util.BasicUtility;
+import com.quiz.quizapp.util.ErrorUtility;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.AuthenticationException;
@@ -15,6 +15,6 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) {
         response.setStatus(401);
-        BasicUtility.printError(e.getMessage(), response);
+        ErrorUtility.printError(e.getMessage(), response);
     }
 }

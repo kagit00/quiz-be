@@ -3,7 +3,7 @@ package com.quiz.quizapp.exceptionhandler;
 import com.quiz.quizapp.exception.BadRequestException;
 import com.quiz.quizapp.exception.InternalServerErrorException;
 import com.quiz.quizapp.model.Error;
-import com.quiz.quizapp.util.BasicUtility;
+import com.quiz.quizapp.util.ErrorUtility;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -27,7 +27,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<Error> handleBadRequestException(BadRequestException e) {
-        return new ResponseEntity<>(BasicUtility.getError(e.getMessage(), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ErrorUtility.getError(e.getMessage(), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
     }
 
     /**
@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
             errorMessage.append(" Field '").append(fieldError.getField())
                     .append("' ").append(fieldError.getDefaultMessage()).append(";");
         }
-        return new ResponseEntity<>(BasicUtility.getError(errorMessage.toString(), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ErrorUtility.getError(errorMessage.toString(), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
     }
 
     /**
@@ -57,7 +57,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(InternalServerErrorException.class)
     public ResponseEntity<Error> handleInternalServerErrorException(InternalServerErrorException e) {
-        return new ResponseEntity<>(BasicUtility.getError(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(ErrorUtility.getError(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

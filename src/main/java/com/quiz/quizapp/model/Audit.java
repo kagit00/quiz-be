@@ -22,4 +22,5 @@ public class Audit {
     @Column(columnDefinition = "TEXT")
     private String response;
     private String status;
+    private String uid;
 }

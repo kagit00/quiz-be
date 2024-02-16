@@ -2,7 +2,7 @@ package com.quiz.quizapp.filter;
 
 import com.quiz.quizapp.service.UserDetailsServiceImpl;
 import com.quiz.quizapp.security.JwtUtils;
-import com.quiz.quizapp.util.BasicUtility;
+import com.quiz.quizapp.util.ErrorUtility;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import jakarta.servlet.FilterChain;
@@ -64,7 +64,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         } catch (IllegalArgumentException | ExpiredJwtException | MalformedJwtException | ServletException | IOException ex) {
             logger.info(ex.getMessage());
             response.setStatus(401);
-            BasicUtility.printError(ex.getMessage(), response);
+            ErrorUtility.printError(ex.getMessage(), response);
         }
     }
 }
