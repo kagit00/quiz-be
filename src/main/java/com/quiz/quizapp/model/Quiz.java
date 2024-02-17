@@ -20,7 +20,7 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "quiz_id", length = 36)
     private UUID quizId;
-    private boolean isActive = false;
+    private boolean isActive = true;
     @NotNull(message = "title can't be null")
     @NotEmpty(message = "title can't be empty")
     @Column(columnDefinition = "TEXT")
