@@ -28,8 +28,8 @@ public class CategoryController {
         return new ResponseEntity<>(BasicUtility.setSuccessBody(this.categoryService.addCategory(category)), HttpStatus.OK);
     }
 
-    @PutMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Success> updateCategory(@Valid @RequestBody Category category) {
+    @PutMapping(value = "/{cid}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Success> updateCategory(@PathVariable("cid") UUID id, @Valid @RequestBody Category category) {
         return new ResponseEntity<>(BasicUtility.setSuccessBody(this.categoryService.updateCategory(category)), HttpStatus.OK);
     }
 
@@ -43,7 +43,8 @@ public class CategoryController {
         return new ResponseEntity<>(BasicUtility.setSuccessBody(this.categoryService.getCategory(id)), HttpStatus.OK);
     }
 
-    public ResponseEntity<Success> deleteCategory(@PathVariable("id") UUID id) {
+    @DeleteMapping(value = "/{cid}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Success> deleteCategory(@PathVariable("cid") UUID id) {
         this.categoryService.deleteCategory(id);
         return new ResponseEntity<>(BasicUtility.setSuccessBody(new NoContent(HttpStatus.OK, "Category Deleted Successfully")), HttpStatus.OK);
     }
