@@ -29,6 +29,8 @@ public class Quiz {
     private String description;
     private int maxMarks;
     private int numberOfQuestions;
+    @Column(columnDefinition = "TEXT")
+    private String imageUrl;
     @ManyToOne
     @JoinColumn(name = "cid")
     private Category category;
