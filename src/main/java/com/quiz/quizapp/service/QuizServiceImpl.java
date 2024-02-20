@@ -1,24 +1,40 @@
 package com.quiz.quizapp.service;
 
 import com.quiz.quizapp.cache.Cache;
+import com.quiz.quizapp.dao.QuizCustomDaoImpl;
 import com.quiz.quizapp.dao.QuizDao;
 import com.quiz.quizapp.exception.BadRequestException;
 import com.quiz.quizapp.model.Quiz;
+import com.quiz.quizapp.model.QuizFilterParams;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * The type Quiz service.
+ */
 @Service
 public class QuizServiceImpl implements QuizService {
 
     private final Cache cache;
     private final QuizDao quizDao;
+    private final QuizCustomDaoImpl quizCustomDao;
 
-    public QuizServiceImpl(Cache cache, QuizDao quizDao) {
+    /**
+     * Instantiates a new Quiz service.
+     *
+     * @param cache         the cache
+     * @param quizDao       the quiz dao
+     * @param quizCustomDao the quiz custom dao
+     */
+    public QuizServiceImpl(Cache cache, QuizDao quizDao, QuizCustomDaoImpl quizCustomDao) {
         this.cache = cache;
         this.quizDao = quizDao;
+        this.quizCustomDao = quizCustomDao;
     }
 
     @Override
@@ -46,7 +62,10 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public Set<Quiz> getQuizzes() {
+    public Set<Quiz> getQuizzes(QuizFilterParams quizFilterParams) {
+        if (!ObjectUtils.isEmpty(quizFilterParams)) {
+            return quizCustomDao.findFilteredQuizzes(quizFilterParams);
+        }
         return this.cache.getQuizzes();
     }
 
