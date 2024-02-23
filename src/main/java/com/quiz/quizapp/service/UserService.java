@@ -1,6 +1,7 @@
 package com.quiz.quizapp.service;
 
 import com.quiz.quizapp.model.User;
+import com.quiz.quizapp.model.UserQuizAssociation;
 
 /**
  * The interface User service.
@@ -37,4 +38,5 @@ public interface UserService {
      * @param username the username
      */
     void deleteUserByUsername(String username);
+    UserQuizAssociation saveUserQuizScore(UserQuizAssociation userQuizAssociation);
 }

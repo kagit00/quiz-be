@@ -22,7 +22,6 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "users")
 public class User implements UserDetails {
-    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

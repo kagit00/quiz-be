@@ -3,8 +3,10 @@ package com.quiz.quizapp.service;
 import com.quiz.quizapp.cache.Cache;
 import com.quiz.quizapp.dao.RoleDao;
 import com.quiz.quizapp.dao.UserDao;
+import com.quiz.quizapp.dao.UserQuizDao;
 import com.quiz.quizapp.exception.BadRequestException;
 import com.quiz.quizapp.model.User;
+import com.quiz.quizapp.model.UserQuizAssociation;
 import com.quiz.quizapp.model.UserRole;
 import com.quiz.quizapp.util.DefaultValuesPopulator;
 import org.apache.commons.lang3.ObjectUtils;
@@ -26,6 +28,7 @@ public class UserServiceImpl implements UserService {
     private final RoleDao roleDao;
     private final BCryptPasswordEncoder encoder;
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private final UserQuizDao userQuizDao;
 
     /**
      * Instantiates a new User service.
@@ -35,11 +38,12 @@ public class UserServiceImpl implements UserService {
      * @param roleDao the role dao
      * @param encoder the encoder
      */
-    public UserServiceImpl(UserDao userDao, Cache cache, RoleDao roleDao, BCryptPasswordEncoder encoder) {
+    public UserServiceImpl(UserDao userDao, Cache cache, RoleDao roleDao, BCryptPasswordEncoder encoder, UserQuizDao userQuizDao) {
         this.userDao = userDao;
         this.cache = cache;
         this.roleDao = roleDao;
         this.encoder = encoder;
+        this.userQuizDao = userQuizDao;
     }
 
     @Override
@@ -90,5 +94,10 @@ public class UserServiceImpl implements UserService {
         if (Objects.isNull(existingUser))
             throw new BadRequestException("User doesn't exist.");
         userDao.delete(existingUser);
+    }
+
+    @Override
+    public UserQuizAssociation saveUserQuizScore(UserQuizAssociation userQuizAssociation) {
+        return this.userQuizDao.save(userQuizAssociation);
     }
 }

@@ -7,7 +7,6 @@ import com.quiz.quizapp.exception.BadRequestException;
 import com.quiz.quizapp.model.Quiz;
 import com.quiz.quizapp.model.QuizFilterParams;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;

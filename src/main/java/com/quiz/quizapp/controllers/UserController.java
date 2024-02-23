@@ -3,6 +3,7 @@ package com.quiz.quizapp.controllers;
 import com.quiz.quizapp.model.NoContent;
 import com.quiz.quizapp.model.Success;
 import com.quiz.quizapp.model.User;
+import com.quiz.quizapp.model.UserQuizAssociation;
 import com.quiz.quizapp.service.UserServiceImpl;
 import com.quiz.quizapp.util.BasicUtility;
 import jakarta.validation.Valid;
@@ -74,5 +75,10 @@ public class UserController {
     public ResponseEntity<Success> deleteUserByUsername(@PathVariable("username") String username) {
         userService.deleteUserByUsername(username);
         return new ResponseEntity<>(BasicUtility.setSuccessBody(new NoContent(HttpStatus.OK, "User successfully deleted.")), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/quiz/score", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Success> saveQuizScore(@RequestBody UserQuizAssociation userQuizAssociation) {
+        return new ResponseEntity<>(BasicUtility.setSuccessBody(userService.saveUserQuizScore(userQuizAssociation)), HttpStatus.OK);
     }
 }
