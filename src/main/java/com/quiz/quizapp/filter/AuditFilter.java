@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.ContentCachingRequestWrapper;
@@ -24,6 +25,8 @@ import java.io.IOException;
 @Order(2)
 public class AuditFilter implements Filter {
 
+    @Value("${app.security.secret-key}")
+    private String secretKey;
     private final AuditDao auditDao;
     private static final Logger logger = LoggerFactory.getLogger(AuditFilter.class);
     private final EncryptionUtil encryptionUtil;
@@ -73,8 +76,8 @@ public class AuditFilter implements Filter {
             Audit audit = new Audit();
             audit.setTimestamp(DefaultValuesPopulator.getCurrentTimestamp());
             audit.setMethodName(requestWrapper.getMethod());
-            audit.setRequest(encryptionUtil.encrypt(requestHeaders + "\n" + "Request Body: " + requestBody));
-            audit.setResponse(encryptionUtil.encrypt(responseHeaders + "\n" + "Response Body: " + responseBody));
+            audit.setRequest(encryptionUtil.encrypt(requestHeaders + "\n" + "Request Body: " + requestBody, secretKey));
+            audit.setResponse(encryptionUtil.encrypt(responseHeaders + "\n" + "Response Body: " + responseBody, secretKey));
             audit.setStatus(String.valueOf(statusCode));
             audit.setUri(requestWrapper.getRequestURI());
             audit.setUid(uid);

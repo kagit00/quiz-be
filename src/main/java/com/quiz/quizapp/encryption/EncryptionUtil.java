@@ -3,7 +3,6 @@ package com.quiz.quizapp.encryption;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -15,8 +14,6 @@ import java.security.SecureRandom;
  */
 @Component
 public class EncryptionUtil {
-    @Value("${app.security.secret-key}")
-    private String secretKey;
     private static final Logger logger = LoggerFactory.getLogger(EncryptionUtil.class);
 
     /**
@@ -25,7 +22,7 @@ public class EncryptionUtil {
      * @param data the data
      * @return the string
      */
-    public String encrypt(String data) {
+    public String encrypt(String data, String secretKey) {
         try {
             Cipher cipher = Cipher.getInstance("AES/CFB/NoPadding");
             byte[] iv = generateRandomIV();
@@ -49,7 +46,7 @@ public class EncryptionUtil {
      * @param encryptedData the encrypted data
      * @return the string
      */
-    public String decrypt(String encryptedData) {
+    public String decrypt(String encryptedData, String secretKey) {
         try {
             Cipher cipher = Cipher.getInstance("AES/CFB/NoPadding");
             byte[] combined = Base64.decodeBase64(encryptedData);

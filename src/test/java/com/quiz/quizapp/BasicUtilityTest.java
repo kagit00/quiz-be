@@ -20,4 +20,13 @@ class BasicUtilityTest {
         role.setRoleName("Moderator");
         Assertions.assertEquals("{\"id\":3,\"roleName\":\"Moderator\",\"roles\":[]}", BasicUtility.stringifyObject(role), "Object stringified successfully");
     }
+
+    /**
+     * Read specific property.
+     */
+    @Test
+    void readSpecificProperty() {
+        String body = "{\"id\":3,\"roleName\":\"Moderator\",\"roles\":[]}";
+        Assertions.assertEquals("Moderator", BasicUtility.readSpecificProperty(body, "roleName"), "Property read successfully");
+    }
 }

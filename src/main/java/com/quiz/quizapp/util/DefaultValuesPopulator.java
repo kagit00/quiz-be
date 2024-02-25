@@ -54,4 +54,8 @@ public final class DefaultValuesPopulator {
     public static String getUid() {
         return UUID.randomUUID().toString();
     }
+
+    public static UUID getRandomId() {
+        return UUID.randomUUID();
+    }
 }
