@@ -1,15 +1,12 @@
 package com.quiz.quizapp.dao;
 
 import com.quiz.quizapp.model.Category;
-import com.quiz.quizapp.model.Question;
 import com.quiz.quizapp.model.Quiz;
 import com.quiz.quizapp.util.DefaultValuesPopulator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 
