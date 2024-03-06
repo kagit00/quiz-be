@@ -1,6 +1,5 @@
 package com.quiz.quizapp.controllers;
 
-import com.google.cloud.dialogflow.v2.SessionsClient;
 import com.quiz.quizapp.service.BotService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

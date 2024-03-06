@@ -12,7 +12,7 @@ public final class BotCreds {
     }
 
     public static GoogleCredentials getCredentials() {
-        try (FileInputStream credentialsStream = new FileInputStream("path/to/your/service-account-key.json")) {
+        try (FileInputStream credentialsStream = new FileInputStream("alex-hxof-44f7504bc506.json")) {
             return GoogleCredentials.fromStream(credentialsStream);
         } catch (Exception e) {
             throw new InternalServerErrorException("Issue fetching credentials for bot: " + e.getMessage());
