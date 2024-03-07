@@ -1,6 +1,11 @@
 package com.quiz.quizapp.controllers;
 
+import com.quiz.quizapp.model.Success;
+import com.quiz.quizapp.model.UserQuery;
 import com.quiz.quizapp.service.BotService;
+import com.quiz.quizapp.util.BasicUtility;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +22,8 @@ public class BotController {
     }
 
     @PostMapping("/query")
-    public String handleChatBotQuery(@RequestBody String userQuery) {
-        return this.botService.handleBotQuery(userQuery);
+    public ResponseEntity<Success> handleChatBotQuery(@RequestBody UserQuery userQuery) {
+        return new ResponseEntity<>(BasicUtility.setSuccessBody(this.botService.handleBotQuery(userQuery.getQuery())), HttpStatus.OK);
+
     }
 }

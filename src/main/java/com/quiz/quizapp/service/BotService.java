@@ -1,7 +1,6 @@
 package com.quiz.quizapp.service;
 
 import com.google.cloud.dialogflow.v2.*;
-import com.google.protobuf.Struct;
 import com.quiz.quizapp.exception.InternalServerErrorException;
 import com.quiz.quizapp.model.BotCreds;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,13 +12,13 @@ public class BotService {
     @Value("${dialogflow.projectId}")
     private String projectId;
 
-    public String handleBotQuery(String userQuery) {
+    public String handleBotQuery(String query) {
         try (SessionsClient sessionsClient = SessionsClient.create(SessionsSettings.newBuilder()
                 .setCredentialsProvider(BotCreds::getCredentials)
                 .build())) {
 
             String sessionId = "unique-session-id";
-            TextInput.Builder textInput = TextInput.newBuilder().setText(userQuery).setLanguageCode("en-US");
+            TextInput.Builder textInput = TextInput.newBuilder().setText(query).setLanguageCode("en-US");
             QueryInput queryInput = QueryInput.newBuilder().setText(textInput).build();
 
             DetectIntentRequest detectIntentRequest =
@@ -30,9 +29,7 @@ public class BotService {
 
             DetectIntentResponse detectIntentResponse = sessionsClient.detectIntent(detectIntentRequest);
             QueryResult queryResult = detectIntentResponse.getQueryResult();
-            Struct parameters = queryResult.getParameters();
-            com.google.protobuf.Value response = parameters.getFieldsOrThrow("response");
-            return response.getStringValue();
+            return queryResult.getFulfillmentText();
         } catch (Exception e) {
             throw new InternalServerErrorException(e.getMessage());
         }
