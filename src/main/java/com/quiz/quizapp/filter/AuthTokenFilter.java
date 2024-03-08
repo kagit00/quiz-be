@@ -45,7 +45,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) {
         try {
             String requestTokenHeader = request.getHeader("Authorization");
-            logger.info(requestTokenHeader);
             String username = null;
             String jwtToken = null;
             if (!StringUtils.isEmpty(requestTokenHeader) && requestTokenHeader.startsWith("Bearer")) {
