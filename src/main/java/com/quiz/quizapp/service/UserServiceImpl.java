@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao;
     private final Cache cache;
     private final RoleDao roleDao;
-    private final BCryptPasswordEncoder encoder;
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     private final UserQuizDao userQuizDao;
 
@@ -36,13 +35,11 @@ public class UserServiceImpl implements UserService {
      * @param userDao the user dao
      * @param cache   the cache
      * @param roleDao the role dao
-     * @param encoder the encoder
      */
-    public UserServiceImpl(UserDao userDao, Cache cache, RoleDao roleDao, BCryptPasswordEncoder encoder, UserQuizDao userQuizDao) {
+    public UserServiceImpl(UserDao userDao, Cache cache, RoleDao roleDao, UserQuizDao userQuizDao) {
         this.userDao = userDao;
         this.cache = cache;
         this.roleDao = roleDao;
-        this.encoder = encoder;
         this.userQuizDao = userQuizDao;
     }
 
@@ -51,7 +48,7 @@ public class UserServiceImpl implements UserService {
         User existingUser = cache.getUserByUsername(user.getUsername());
         if (!Objects.isNull(existingUser))
             throw new BadRequestException("User already exists.");
-        user.setPassword(encoder.encode(user.getPassword()));
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         Set<UserRole> userRoles = DefaultValuesPopulator.populateDefaultUserRoles(user);
         for (UserRole ur : userRoles) roleDao.save(ur.getRole());
         user.getRoles().addAll(userRoles);
