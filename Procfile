@@ -1,1 +1,1 @@
-web: java -jar target/quizapp.war
+web: java -jar target/quizapp-0.0.1-SNAPSHOT.war
