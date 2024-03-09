@@ -3,6 +3,7 @@ package com.quiz.quizapp.model;
 import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 @Entity
 @ToString
@@ -16,5 +17,5 @@ public class BotDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(columnDefinition = "json")
-    private JsonNode botDetailsAsJson;
+    private String botDetailsAsJson;
 }

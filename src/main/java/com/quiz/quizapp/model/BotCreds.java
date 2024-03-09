@@ -21,7 +21,7 @@ public final class BotCreds {
             Optional<BotDetails> botDetailsOptional = botDao.findById(1);
             if (botDetailsOptional.isPresent()) {
                 BotDetails botDetails = botDetailsOptional.get();
-                String botDetailsAsString = botDetails.getBotDetailsAsJson().toString();
+                String botDetailsAsString = botDetails.getBotDetailsAsJson();
                 ByteArrayInputStream credentialsStream = new ByteArrayInputStream(botDetailsAsString.getBytes(StandardCharsets.UTF_8));
                 return GoogleCredentials.fromStream(credentialsStream);
             }
