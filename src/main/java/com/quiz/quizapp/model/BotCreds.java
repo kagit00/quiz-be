@@ -2,8 +2,7 @@ package com.quiz.quizapp.model;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.quiz.quizapp.exception.InternalServerErrorException;
-
-import java.io.FileInputStream;
+import java.io.ByteArrayInputStream;
 
 public final class BotCreds {
 
@@ -12,8 +11,9 @@ public final class BotCreds {
     }
 
     public static GoogleCredentials getCredentials() {
-        try (FileInputStream credentialsStream = new FileInputStream(System.getenv("DIALOGFLOW_JSON_FILE"))) {
-            return GoogleCredentials.fromStream(credentialsStream);
+        try {
+            String jsonContent = System.getenv("DIALOGFLOW_JSON_CONTENT");
+            return GoogleCredentials.fromStream(new ByteArrayInputStream(jsonContent.getBytes()));
         } catch (Exception e) {
             throw new InternalServerErrorException("Issue fetching credentials for bot: " + e.getMessage());
         }
