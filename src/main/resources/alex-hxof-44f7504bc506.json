@@ -1,9 +1,9 @@
 {
   "type": "service_account",
-  "project_id": "${DIALOGFLOW_PROJECT_ID}",
-  "private_key_id": "${DIALOGFLOW_PRIVATE_KEY_ID}",
-  "private_key": "${DIALOGFLOW_PRIVATE_KEY}",
-  "client_email": "${DIALOGFLOW_CLIENT_EMAIL}",
+  "project_id": "alex-hxof",
+  "private_key_id": "44f7504bc506348f8c0b5401c8fd89110294f5ac",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDLIAupiZ3tzLot\n08X/tb0j3xUhIs6Cqn8xeoRfvqSF4KIPpOsZtFZqUGYcR9mdXblCKk/RUEHGZeLT\nP2UR4g0h8xBIR2T9Vm9bXerNiWWuOn/zqMWWRx8j+BOBzgkLmst6bH4WooJkmgMm\ngndQAI8z6ltN3lO2XlOP/ZNQXq7RLiQruMk0tQdwXVPZ27zYT1hYdPrBd5cgXVOm\nMnEE59wA4GLFOErICAhKKA+mv3wL3D2O/00ND4a3JjmAoK15H+tmdgZQQPVOzDMr\nd1HdHkqCZ4otnvJyuw3QZGay/u9IRLwDPg2dgmHLdbKYVg0LWFi2PaQKwA+IfXSf\ngdV+7XsTAgMBAAECggEALCfSsS+jv6pl/IlRPOWecJpRhwsAdmIm1TQra37PV/T9\ndcYlf0h3EpRYpiQuV6mkmJAHGtrF+aFzXfWlfG416Z/jdbrjZrjv6x4u6TBJhMbd\nwrN5BFKAn/qRDwIhcD7dpcbI4BXCn6jlL21kD2WXu7Lh1zsR2o6FvsLiT7HNcdYh\nTSlCqNHxeZR6QPKs3fMizP5+UbQKoZ4zHJwe3v4P4X8AbG3IE3hJmzB0ebu4HL6y\nvvBLZkRDKPf5B87BYd7h2pZmeOUExgEE5HFAWk7L9whrtzuu/bN2wYBvpHOLczx4\n0ctcuScBw+zcce7XNyiMY2VsFx63Y/d1ejUnSJQdlQKBgQDkxk8leG2B5Cd1aM98\n6qByXStf0sRe54SwvgXpWG/GWRzkkOJHZ0KCSr1uJPBxTetN/RKy1VCto2nFTCih\n5NH4lNBVszmeVx0XFIQ6if1hF7z5S9ozY2TN8UmyiXAID4kSHIMUgCAJcnUF4MLX\n+/kTpTLkSaJ/zx9vUw9djdMMfQKBgQDjTFE/3Eo2NnPiULjpS8woK1ULyQVZ9OOo\nCmRxHsOhQgqZW3p9p547bOlY/QxB2sIk1CGo5cjUy9anOUwrchYNBxn1l6NWX8Zq\n9Sxz8AQcbPfpEpWCipJEj+arxc6fzCehoW/4BLVItOLyXrGQU4ZqReb0UqcLZ1cK\nZh96M6eKzwKBgQDDcdwqAeFkJ7vCJYGlkXjzWz90BMc44QfOSvkX6jLLvFPfvRtj\nrwb18s407B/yXIQbQ4qW94COZ140bSUFckwj11bI8G3YJUo37pIsxLiQG0yZmkDW\nyCJVgr7YZWwtpsAOlgcyG2fDSmJJXER5as3XB7obqADIufV8EPS+kyxrrQKBgQCn\noktx+7fHz9Ubnkkh1kMVhQ/OB02pEJEuB6wYOYYyUhCbFfp63bo3PZXDia0WjI4O\nt1yzwfSh7Eu9PObOS++zX/9nP5S5SR1/GJ7WSrfddwhHnushQa2qXy7SlKpU9C5u\naC+6DU7d9npCIlB2jwNdMXypyKNmJ6rsAnFIoPv5xQKBgQDIglNW3ZVhwfGWfRu0\nUTGs1xUFlZ1XUbFkF9aW1pD3ZrdWFtzUIk0vI5UjRrSTuiWWJZ97fFlp+95jng5O\ng6L6ZGqNDJV1tD3wytWIrvFPhVJ/fm02Q29UmF6dAShGQUDb6KWWGjKJmDcCP+mA\nKgr3Jgsb83sZZdxNAqYwneXARw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "quizbot@alex-hxof.iam.gserviceaccount.com",
   "client_id": "105648705720638227182",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",

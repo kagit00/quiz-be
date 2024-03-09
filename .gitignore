@@ -1,5 +1,6 @@
 HELP.md
 target/
+src/main/resources/alex-hxof-44f7504bc506.json
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
