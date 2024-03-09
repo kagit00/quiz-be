@@ -1,6 +1,7 @@
 package com.quiz.quizapp.service;
 
 import com.google.cloud.dialogflow.v2.*;
+import com.quiz.quizapp.dao.BotDao;
 import com.quiz.quizapp.exception.InternalServerErrorException;
 import com.quiz.quizapp.model.BotCreds;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,9 +13,14 @@ public class BotService {
     @Value("${dialogflow.projectId}")
     private String projectId;
 
+    private final BotDao botDao;
+    public BotService(BotDao botDao) {
+        this.botDao = botDao;
+    }
+
     public String handleBotQuery(String query) {
         try (SessionsClient sessionsClient = SessionsClient.create(SessionsSettings.newBuilder()
-                .setCredentialsProvider(BotCreds::getCredentials)
+                .setCredentialsProvider(() -> BotCreds.getCredentials(botDao))
                 .build())) {
 
             String sessionId = "unique-session-id";
