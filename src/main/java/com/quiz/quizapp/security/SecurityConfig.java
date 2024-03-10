@@ -86,7 +86,14 @@ public class SecurityConfig {
                     .authorizeHttpRequests(auth ->
                             auth
                                     .requestMatchers("/users", "/auth/token").permitAll()
-                                    .requestMatchers("/users/**", "/categories/**", "/questions/**", "/quizzes/**", "/bot/**")
+                                    .requestMatchers(
+                                            "/users/**",
+                                            "/categories/**",
+                                            "/questions/**",
+                                            "/quizzes/**",
+                                            "/bot/**",
+                                            "/donation/**"
+                                    )
                                     .hasAnyAuthority(Constant.USER_ROLE, Constant.ADMIN_ROLE)
                                     .anyRequest().authenticated()
                     ).exceptionHandling(ex -> ex.authenticationEntryPoint(unauthorizedHandler))

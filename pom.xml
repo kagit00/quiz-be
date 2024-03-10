@@ -115,6 +115,11 @@
 			<artifactId>google-cloud-dialogflow</artifactId>
 			<version>4.42.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.razorpay</groupId>
+			<artifactId>razorpay-java</artifactId>
+			<version>1.4.5</version>
+		</dependency>
 	</dependencies>
 
 	<build>
