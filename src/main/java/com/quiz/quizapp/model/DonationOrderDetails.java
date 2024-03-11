@@ -29,4 +29,6 @@ public class DonationOrderDetails {
     private String offerId;
     private String orderId;
     private String key;
+    @Column(nullable = true)
+    private int userId;
 }

@@ -1,5 +1,4 @@
 package com.quiz.quizapp.model;
-
 import lombok.*;
 
 @Getter
@@ -9,4 +8,5 @@ import lombok.*;
 @ToString
 public class DonationAmount {
     private String  amount;
+    private int userId;
 }
